@@ -1,6 +1,6 @@
 <div class="login-container">
     <div class="login-title-container">
-        <h1>Ng Timekeeper</h1>
+        <h1 class="login-title">Ng Timekeeper</h1>
     </div>
     <div class="login-card-container">
         <mat-card class="login-card">
@@ -10,14 +10,14 @@
             <mat-card-content>
                 <form>
                     <div class="email-form-field-container">
-                        <mat-form-field>
+                        <mat-form-field appearance="outline" class="email-form-field">
                             <mat-label>Email</mat-label>
                             <input type="email" matInput>
                         </mat-form-field>
                     </div>
 
                     <div class="password-form-field-container">
-                        <mat-form-field>
+                        <mat-form-field appearance="outline" class="password-form-field">
                             <mat-label>Password</mat-label>
                             <input matInput>
                         </mat-form-field>
@@ -29,6 +29,10 @@
                     <button mat-button class="sign-in-button">Sign In</button>
                 </div>
             </mat-card-actions>
+            <mat-card-footer class="login-card-footer">
+                <mat-divider class="login-card-divider"></mat-divider>
+                New to Ng-Timekeeper? <a [routerLink]="['new-account']">Create an account.</a>
+            </mat-card-footer>
         </mat-card>
     </div>
 </div>
