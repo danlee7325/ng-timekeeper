@@ -5,6 +5,8 @@ import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './pages/login/login.component';
 
 import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -13,8 +15,12 @@ import { MatCardModule } from '@angular/material/card';
   ],
   imports: [
     CommonModule,
+    
     LoginRoutingModule,
+
     MatCardModule,
+    MatInputModule,
+    MatButtonModule,
   ]
 })
 export class LoginModule { }

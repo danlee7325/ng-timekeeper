@@ -1,11 +1,34 @@
-#login-container {
+@import "/src/app/app.component.scss";
+
+.login-container {
+    @extend .centered-container;
+
+    height: 100%;
+    width: 100%;
+    background-color: #f4f5f8;
+}
+
+.login-title-container {
+    display: flex;
+    justify-content: center;
+}
+
+.login-card {
+    width: 50rem;
+    padding: 3rem;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
 }
 
-#login-card {
-    padding: 3rem;
+.email-form-field-container {
+    padding-top: 3rem;
+}
+
+.sign-in-button {
+    height: 3rem;
+    width: 10rem;
+    background-color: #0077c5;
+    color: white !important;
 }
