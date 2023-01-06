@@ -6,7 +6,17 @@ const routes: Routes = [
     path: 'login',
     title: 'Login',
     loadChildren: () => import('./features/login/login.module').then(m => m.LoginModule)
-  }
+  },
+  {
+    path: 'main',
+    title: 'Main',
+    loadChildren: () => import('./features/main/main.module').then(m => m.MainModule)
+  },
+  {
+    path: '',
+    title: 'Login',
+    loadChildren: () => import('./features/login/login.module').then(m => m.LoginModule)
+  },
 ];
 
 @NgModule({

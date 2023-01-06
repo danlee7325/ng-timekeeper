@@ -7,27 +7,35 @@
             <mat-card-title>
                 Sign In
             </mat-card-title>
-            <mat-card-content>
-                <form>
+            <mat-card-actions>
+                <form [formGroup]="loginFormGroup" (ngSubmit)="onSubmit()">
                     <div class="email-form-field-container">
                         <mat-form-field appearance="outline" class="email-form-field">
                             <mat-label>Email</mat-label>
-                            <input type="email" matInput>
+                            <input type="email" matInput formControlName="emailFormControl" [errorStateMatcher]="matcher">
+                            <mat-error *ngIf="loginFormGroup.get('emailFormControl')?.hasError('email') && !loginFormGroup.get('emailFormControl')?.hasError('required')">
+                                Please enter a valid email address
+                            </mat-error>
+                            <mat-error *ngIf="loginFormGroup.get('emailFormControl')?.hasError('required')">
+                                Email is <strong>required</strong>
+                            </mat-error>
                         </mat-form-field>
                     </div>
 
                     <div class="password-form-field-container">
                         <mat-form-field appearance="outline" class="password-form-field">
                             <mat-label>Password</mat-label>
-                            <input matInput>
+                            <input type="password" matInput formControlName="passwordFormControl">
+                            <mat-error *ngIf="loginFormGroup.get('passwordFormControl')?.hasError('required')">
+                                Password is <strong>required</strong>
+                            </mat-error>
                         </mat-form-field>
                     </div>
+
+                    <div class="sign-in-button-container">
+                        <button type="submit" mat-button class="sign-in-button">Sign In</button>
+                    </div>
                 </form>
-            </mat-card-content>
-            <mat-card-actions>
-                <div>
-                    <button mat-button class="sign-in-button">Sign In</button>
-                </div>
             </mat-card-actions>
             <mat-card-footer class="login-card-footer">
                 <mat-divider class="login-card-divider"></mat-divider>
