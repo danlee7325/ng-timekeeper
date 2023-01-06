@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 
+import { AuthService } from 'src/app/core/services/auth/auth.service';
+
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
@@ -16,7 +18,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
 
   loginFormGroup = new FormGroup({
@@ -32,6 +34,8 @@ export class LoginComponent {
       !this.loginFormGroup.get('passwordFormControl')?.hasError('required');
 
     if (canSubmit) {
+      this.authService.isAuthenticated = true;
+      
       this.router.navigate(['main']);
     }
   }
