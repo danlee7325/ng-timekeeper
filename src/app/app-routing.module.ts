@@ -19,6 +19,11 @@ const routes: Routes = [
     title: 'Login',
     loadChildren: () => import('./features/login/login.module').then(m => m.LoginModule)
   },
+  {
+    path: '**',
+    title: 'Not Found',
+    loadChildren: () => import('./features/not-found/not-found.module').then(m => m.NotFoundModule)
+  },
 ];
 
 @NgModule({
