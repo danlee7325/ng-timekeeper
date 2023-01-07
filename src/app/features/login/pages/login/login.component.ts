@@ -36,7 +36,7 @@ export class LoginComponent {
     if (canSubmit) {
       this.authService.isAuthenticated = true;
       
-      this.router.navigate(['main']);
+      this.router.navigate(['/main']);
     }
   }
 }

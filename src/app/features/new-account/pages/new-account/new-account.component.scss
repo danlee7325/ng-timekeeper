@@ -1,0 +1,77 @@
+@import "/src/app/app.component.scss";
+
+.create-account-container {
+    @extend .centered-container;
+
+    height: 100%;
+    width: 100%;
+    background-color: #f4f5f8;
+}
+
+.create-account-title-container {
+    display: flex;
+    justify-content: center;
+}
+
+.create-account-title {
+    font-weight: bolder;
+}
+
+.create-account-card {
+    width: 50rem;
+    padding: 3rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name-form-field-container {
+    padding-top: 2rem;
+}
+
+.name-form-field {
+    width: 20rem;
+}
+
+.email-form-field-container {
+    padding-top: 1rem;
+}
+
+.email-form-field {
+    width: 20rem;
+}
+
+.password-form-field-container {
+    padding-top: 1rem;
+}
+
+.password-form-field {
+    width: 20rem;
+}
+
+.create-account-card-footer {
+    padding: 1rem;
+    text-align: center;
+}
+
+.sign-in-button-container {
+    text-align: center;
+    padding-top: 2rem;
+}
+
+.sign-in-button {
+    height: 3rem;
+    width: 10rem;
+    background-color: #0077c5;
+    color: white !important;
+}
+
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
+
+.create-account-card-divider {
+    width: 40rem;
+    padding-bottom: 1rem;
+}

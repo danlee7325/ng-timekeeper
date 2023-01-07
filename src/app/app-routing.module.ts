@@ -15,6 +15,11 @@ const routes: Routes = [
     loadChildren: () => import('./features/main/main.module').then(m => m.MainModule)
   },
   {
+    path: 'new-account',
+    title: 'New Account',
+    loadChildren: () => import('./features/new-account/new-account.module').then(m => m.NewAccountModule)
+  },
+  {
     path: '',
     title: 'Login',
     loadChildren: () => import('./features/login/login.module').then(m => m.LoginModule)

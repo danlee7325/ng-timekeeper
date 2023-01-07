@@ -7,10 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LoginModule } from './features/login/login.module';
 import { MainModule } from './features/main/main.module';
+import { NewAccountModule } from './features/new-account/new-account.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -18,6 +19,7 @@ import { MainModule } from './features/main/main.module';
     BrowserAnimationsModule,
     LoginModule,
     MainModule,
+    NewAccountModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
