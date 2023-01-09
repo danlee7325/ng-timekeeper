@@ -1,0 +1,21 @@
+<p>
+    <mat-toolbar color="primary">
+        <mat-toolbar-row class="header-top-row">
+            <div class="header-top-row-section left-text">
+                <button mat-icon-button aria-label="Toggle sidenav">
+                    <mat-icon>menu</mat-icon>
+                </button>
+            </div>
+            <div class="header-top-row-section center-text">
+                <span>Ng Timekeeper</span>
+            </div>
+            <div class="header-top-row-section right-text">
+                <!--Add dynamic name-->
+                <span class="user-name">Daniel Lee</span>
+            </div>
+        </mat-toolbar-row>
+        <mat-toolbar-row class="header-bottom-row">
+            {{ currentTime | date: 'EEEE, MMMM d, y - h:mm:ss a' }}
+        </mat-toolbar-row>
+    </mat-toolbar>
+</p>
