@@ -9,8 +9,7 @@ const routes: Routes = [
     loadChildren: () => import('./features/login/login.module').then(m => m.LoginModule)
   },
   {
-    path: 'main',
-    title: 'Main',
+    path: '',
 //    canActivate: [AuthGuard],
     loadChildren: () => import('./features/main/main.module').then(m => m.MainModule)
   },
@@ -18,11 +17,6 @@ const routes: Routes = [
     path: 'new-account',
     title: 'New Account',
     loadChildren: () => import('./features/new-account/new-account.module').then(m => m.NewAccountModule)
-  },
-  {
-    path: '',
-    title: 'Login',
-    loadChildren: () => import('./features/login/login.module').then(m => m.LoginModule)
   },
   {
     path: '**',

@@ -5,8 +5,24 @@ import { MainComponent } from './pages/main/main.component';
 const routes: Routes = [
   {
     path: '',
-    title: 'Main',
-    component: MainComponent
+    component: MainComponent,
+    children: [
+      {
+        path: '',
+        title: 'Schedules',
+        loadChildren: () => import('../schedules/schedules.module').then(m => m.SchedulesModule)
+      },
+      {
+        path: 'schedules',
+        title: 'Schedules',
+        loadChildren: () => import('../schedules/schedules.module').then(m => m.SchedulesModule)
+      },
+      {
+        path: 'admin',
+        title: 'Admin',
+        loadChildren: () => import('../admin/admin.module').then(m => m.AdminModule)
+      },
+    ]
   }
 ];
 

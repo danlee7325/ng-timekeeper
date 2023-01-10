@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { HeaderComponent } from './header/header.component';
-import { MatIconModule } from '@angular/material/icon'; 
+import { MatIconModule } from '@angular/material/icon';
+import { FooterComponent } from './footer/footer.component'; 
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
@@ -16,7 +18,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule,
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent,
   ]
 })
 export class CoreComponentsModule { }

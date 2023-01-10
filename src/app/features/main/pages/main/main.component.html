@@ -2,14 +2,12 @@
     <app-header class="header" [drawer]="drawer"></app-header>
     <mat-drawer-container autosize class="sidenav-container">
         <mat-drawer #drawer mode="side" class="sidenav">
-            TESTING!
+            <app-sidenav></app-sidenav>
         </mat-drawer>
 
         <div class="sidenav-content">
-            TESTING!!
+            <router-outlet></router-outlet>
         </div>
     </mat-drawer-container>
-    <div class="footer">
-        Footer
-    </div>
+    <app-footer class="footer"></app-footer>
 </div>
