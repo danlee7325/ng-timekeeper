@@ -1,2 +1,15 @@
-<app-header></app-header>
-Testing
+<div class="main-container">
+    <app-header class="header" [drawer]="drawer"></app-header>
+    <mat-drawer-container autosize class="sidenav-container">
+        <mat-drawer #drawer mode="side" class="sidenav">
+            TESTING!
+        </mat-drawer>
+
+        <div class="sidenav-content">
+            TESTING!!
+        </div>
+    </mat-drawer-container>
+    <div class="footer">
+        Footer
+    </div>
+</div>

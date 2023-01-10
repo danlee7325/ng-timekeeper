@@ -1,0 +1,31 @@
+.main-section-padding {
+    padding: 1rem 2rem;
+}
+
+.main-container {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.header {
+    flex: 0 1 auto;
+}
+
+.sidenav-container {
+    flex: 1 1 auto;
+}
+
+.sidenav {
+    @extend .main-section-padding;
+}
+
+.sidenav-content {
+    @extend .main-section-padding;
+}
+
+.footer {
+    @extend .main-section-padding;
+    flex: 0 1 7rem;
+    border-top: solid 1px rgba(0,0,0,.12);
+}

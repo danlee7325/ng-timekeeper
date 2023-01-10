@@ -1,4 +1,5 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +10,8 @@ export class HeaderComponent implements OnDestroy {
   currentTime: number = Date.now();
   currentTimeInterval: NodeJS.Timer;
 
+  @Input() drawer!: MatDrawer;
+
   constructor() {
     this.currentTimeInterval = setInterval(() => this.currentTime = Date.now(), 1);
   }
@@ -16,5 +19,4 @@ export class HeaderComponent implements OnDestroy {
   ngOnDestroy(): void {
     clearInterval(this.currentTimeInterval);
   }
-
 }

@@ -5,6 +5,8 @@ import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './pages/main/main.component';
 import { CoreComponentsModule } from 'src/app/core/components/core-components.module';
 
+import { MatSidenavModule } from '@angular/material/sidenav';
+
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { CoreComponentsModule } from 'src/app/core/components/core-components.mo
     CommonModule,
     MainRoutingModule,
     CoreComponentsModule,
+
+    MatSidenavModule,
   ]
 })
 export class MainModule { }
