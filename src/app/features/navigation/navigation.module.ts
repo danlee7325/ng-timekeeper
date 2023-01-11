@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SidenavComponent } from './pages/sidenav/sidenav.component';
+import { NavigationComponent } from './pages/navigation/navigation.component';
 
 @NgModule({
   declarations: [
-    SidenavComponent
+    NavigationComponent
   ],
   imports: [
     CommonModule,
   ],
   exports: [
-    SidenavComponent
+    NavigationComponent
   ]
 })
-export class SidenavModule { }
+export class NavigationModule { }
