@@ -8,6 +8,7 @@ import { ScheduleListComponent } from './components/schedule-list/schedule-list.
 import { ScheduleDetailsComponent } from './components/schedule-details/schedule-details.component';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon'; 
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
   imports: [
     CommonModule,
     SchedulesRoutingModule,
+
     MatSidenavModule,
+    MatIconModule,
   ],
   exports: [
     ScheduleDetailsComponent

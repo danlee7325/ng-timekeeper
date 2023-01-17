@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class ScheduleListComponent {
 
+  test(): void {
+    console.log('TEST');
+  }
 }

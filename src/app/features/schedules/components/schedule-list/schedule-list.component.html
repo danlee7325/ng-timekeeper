@@ -1,1 +1,29 @@
-<h1 class="schedule-list-title">Schedules</h1>
+<div class="schedule-container">
+    <h1 class="schedule-list-title">Schedules</h1>
+    <div class="schedule-list-header-container">
+        <div class="name-header">Name</div>
+        <div class="category-header">Category</div>
+        <div class="start-time-header">Start Time</div>
+        <div class="end-time-header">End Time</div>
+        <div class="duration-header">Duration</div>
+        <div class="schedule-header">
+            <div class="start-schedule-container">
+                <a routerLink="" (click)="test()" class="schedule-link">
+                    <mat-icon>start</mat-icon><div class="schedule-text">Start Schedule</div>
+                </a>
+            </div>
+            <div class="add-schedule-container">
+                <a routerLink="" (click)="test()" class="schedule-link">
+                    <mat-icon>add</mat-icon><div class="schedule-text">Add Schedule</div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="schedule-item-container">
+        <div class="name-item"></div>
+        <div class="category-item"></div>
+        <div class="start-time-item"></div>
+        <div class="end-time-item"></div>
+        <div class="duration-item"></div>
+    </div> -->
+</div>
