@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Schedule } from '../../models/schedule';
 
 @Component({
   selector: 'app-schedule-list',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./schedule-list.component.scss']
 })
 export class ScheduleListComponent {
+
+  
 
   test(): void {
     console.log('TEST');
