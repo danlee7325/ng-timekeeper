@@ -7,9 +7,14 @@
         <div class="end-time-header">End Time</div>
         <div class="duration-header">Duration</div>
         <div class="schedule-header">
-            <div class="start-schedule-container">
+            <div *ngIf="!isScheduleRunning" (click)="startSchedule()" class="start-schedule-container">
                 <a routerLink="" class="schedule-link">
                     <mat-icon>start</mat-icon><div class="schedule-text">Start Schedule</div>
+                </a>
+            </div>
+            <div *ngIf="isScheduleRunning" (click)="endSchedule()" class="start-schedule-container">
+                <a routerLink="" class="schedule-link">
+                    <mat-icon>start</mat-icon><div class="schedule-text">End Schedule</div>
                 </a>
             </div>
             <div class="add-schedule-container">
@@ -25,6 +30,14 @@
         <div class="start-time-item">{{ schedule.startTime | date: 'MMM d, y, h:mm:ss a' }}</div>
         <div class="end-time-item">{{ schedule.endTime | date: 'MMM d, y, h:mm:ss a' }}</div>
         <div class="duration-item">{{ schedule | scheduleDuration }}</div>
+        <div class="edit-schedule-item"><a routerLink="">Edit Schedule</a></div>
+    </div>
+    <div *ngIf="isScheduleRunning" class="schedule-item-container">
+        <div class="name-item">{{ '' }}</div>
+        <div class="category-item">{{ '' }}</div>
+        <div class="start-time-item">{{ startTime | date: 'MMM d, y, h:mm:ss a' }}</div>
+        <div class="end-time-item">{{ '' }}</div>
+        <div class="duration-item">{{ calculateRunningSchedule() }}</div>
         <div class="edit-schedule-item"><a routerLink="">Edit Schedule</a></div>
     </div>
 </div>

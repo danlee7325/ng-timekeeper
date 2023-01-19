@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+
 import { Schedule } from '../../models/schedule';
+
+import { UserService } from 'src/app/core/services/user/user.service';
 
 import { v4 as uuidv4 } from 'uuid';
 import { DateTime } from 'luxon';
@@ -10,6 +13,10 @@ import { DateTime } from 'luxon';
   styleUrls: ['./schedule-list.component.scss']
 })
 export class ScheduleListComponent {
+  isScheduleRunning: boolean = false;
+  startTime: Date = new Date();
+  endTime: Date = new Date();
+
   // Dummy data since project is not connected to an API yet
   schedules: Schedule[] = [
     {
@@ -37,4 +44,28 @@ export class ScheduleListComponent {
       endTime: new Date('January 17, 2023 16:03:55'),
     }
   ];
+
+  constructor(private userService: UserService) {}
+
+  calculateRunningSchedule(): string {
+    if (this.startTime < new Date()) {
+      return DateTime.now().diff(DateTime.fromJSDate(this.startTime)).toFormat('h\'h\' m\'m\' s\'s\'');
+    } else {
+      return 'Cannot calculate schedule\'s duration!';
+    }
+  }
+
+  startSchedule(): void {
+    this.isScheduleRunning = true;
+    this.startTime = new Date();
+  }
+
+  endSchedule(): void {
+    this.isScheduleRunning = false;
+    this.endTime = new Date();
+
+    const schedule = new Schedule(this.userService.name, '', '', this.startTime, this.endTime);
+
+    this.schedules.push(schedule);
+  }
 }
