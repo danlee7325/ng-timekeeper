@@ -5,6 +5,8 @@
 .schedule-list-header-container {
     display: flex;
     align-items: center;
+    font-weight: 550;
+    padding-bottom: 0.5rem;
 
     .name-header {
         flex: 1;
@@ -48,5 +50,34 @@
             padding-left: 0.25rem;
             }
         }
+    }
+}
+
+.schedule-item-container {
+    display: flex;
+    align-items: center;
+
+    .name-item {
+        flex: 1;
+    }
+
+    .category-item {
+        flex: 1;
+    }
+
+    .start-time-item {
+        flex: 1;
+    }
+
+    .end-time-item {
+        flex: 1;
+    }
+
+    .duration-item {
+        flex: 1;
+    }
+
+    .edit-schedule-item {
+        flex: 1;
     }
 }

@@ -8,22 +8,23 @@
         <div class="duration-header">Duration</div>
         <div class="schedule-header">
             <div class="start-schedule-container">
-                <a routerLink="" (click)="test()" class="schedule-link">
+                <a routerLink="" class="schedule-link">
                     <mat-icon>start</mat-icon><div class="schedule-text">Start Schedule</div>
                 </a>
             </div>
             <div class="add-schedule-container">
-                <a routerLink="" (click)="test()" class="schedule-link">
+                <a routerLink="" class="schedule-link">
                     <mat-icon>add</mat-icon><div class="schedule-text">Add Schedule</div>
                 </a>
             </div>
         </div>
     </div>
-    <div class="schedule-item-container">
-        <div class="name-item"></div>
-        <div class="category-item"></div>
-        <div class="start-time-item"></div>
-        <div class="end-time-item"></div>
-        <div class="duration-item"></div>
+    <div class="schedule-item-container" *ngFor="let schedule of schedules">
+        <div class="name-item">{{ schedule.name }}</div>
+        <div class="category-item">{{ schedule.category }}</div>
+        <div class="start-time-item">{{ schedule.startTime | date: 'MMM d, y, h:mm:ss a' }}</div>
+        <div class="end-time-item">{{ schedule.endTime | date: 'MMM d, y, h:mm:ss a' }}</div>
+        <div class="duration-item">{{ schedule | scheduleDuration }}</div>
+        <div class="edit-schedule-item"><a routerLink="">Edit Schedule</a></div>
     </div>
 </div>
