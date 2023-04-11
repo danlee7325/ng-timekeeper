@@ -6,7 +6,7 @@ export class Schedule {
     name: string;
     category: string;
     startTime: Date;
-    endTime: Date;
+    endTime: Date | undefined;
 
     constructor(user: string = '', name: string = '', category: string = '', startTime: Date = new Date(0), endTime: Date = new Date(0)) {
         this.id = uuidv4();

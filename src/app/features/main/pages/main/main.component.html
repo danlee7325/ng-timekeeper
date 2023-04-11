@@ -2,11 +2,11 @@
     <app-header class="header" [drawer]="navDrawer"></app-header>
     <mat-drawer-container class="sidenav-container">
 
-        <mat-drawer #navDrawer mode="side" opened="false" class="sidenav">
+        <mat-drawer #navDrawer mode="side" opened="true" class="sidenav">
             <app-navigation></app-navigation>
         </mat-drawer>
 
-        <mat-drawer #scheduleDrawer mode="side" opened="true" position="end" class="sidenav">
+        <mat-drawer #scheduleDrawer mode="side" opened="false" position="end" class="sidenav">
             <app-schedule-details></app-schedule-details>
         </mat-drawer>
 
