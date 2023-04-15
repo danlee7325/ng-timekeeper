@@ -1,8 +1,43 @@
-<h1 mat-dialog-title>Add Schedule</h1>
-<div mat-dialog-content>
-  Add form
-</div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button mat-dialog-close cdkFocusInitial>Add</button>
+<div class="schedule-dialog-container">
+  <h1 mat-dialog-title class="schedule-dialog-title">{{ dialogType }} Schedule</h1>
+  <div mat-dialog-content>
+    <div>
+      <mat-form-field class="schedule-dialog-input">
+        <mat-label>Name</mat-label>
+        <input matInput [value]="name">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field class="schedule-dialog-input">
+        <mat-label>Category</mat-label>
+        <input matInput [value]="category">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field class="schedule-dialog-input">
+        <mat-label>Start Time</mat-label>
+        <input matInput [value]="startTime">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field class="schedule-dialog-input">
+        <mat-label>End Time</mat-label>
+        <input matInput [value]="endTime">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field class="schedule-dialog-input">
+        <mat-label>Duration</mat-label>
+        <input matInput [value]="duration">
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions class="schedule-dialog-actions">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button mat-dialog-close cdkFocusInitial>{{ dialogType }}</button>
+  </div>
 </div>

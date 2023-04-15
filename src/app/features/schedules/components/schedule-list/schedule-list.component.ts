@@ -4,9 +4,13 @@ import { Schedule } from '../../models/schedule';
 
 import { v4 as uuidv4 } from 'uuid';
 import { DateTime } from 'luxon';
+
 import { MatTable } from '@angular/material/table'
+import { MatDialog } from '@angular/material/dialog';
 
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+
+import { ScheduleDialogComponent } from '../schedule-dialog/schedule-dialog.component';
 
 @Component({
   selector: 'app-schedule-list',
@@ -52,7 +56,7 @@ export class ScheduleListComponent implements OnInit {
   defaultName: string = 'Schedule';
   defaultCategory: string = 'Category';
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
   }
@@ -92,5 +96,14 @@ export class ScheduleListComponent implements OnInit {
     }
 
     return duration;
+  }
+
+  openEdit(schedule: Schedule): void {
+    this.dialog.open(ScheduleDialogComponent, {
+      data: {
+        type: 'edit',
+        schedule: schedule,
+      }
+    });
   }
 }

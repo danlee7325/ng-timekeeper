@@ -59,7 +59,7 @@
                     </div>
                 </div>
             </th>
-            <td mat-cell *matCellDef="let element"> Edit </td>
+            <td mat-cell *matCellDef="let element" class="edit-cell"> <a routerLink="" (click)="openEdit(element)">Edit</a> </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

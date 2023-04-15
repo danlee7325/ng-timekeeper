@@ -16,6 +16,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 
 import { ScheduleDurationPipe } from 'src/app/core/pipes/scheduleDuration.pipe';
 import { ScheduleDialogComponent } from './components/schedule-dialog/schedule-dialog.component';
@@ -39,6 +42,9 @@ import { ScheduleDialogComponent } from './components/schedule-dialog/schedule-d
     MatDatepickerModule,
     MatNativeDateModule,
     MatTableModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatButtonModule,
 
     FontAwesomeModule
   ],
