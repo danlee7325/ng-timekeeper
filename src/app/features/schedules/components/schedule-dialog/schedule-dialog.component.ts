@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DateTime } from 'luxon';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Schedule } from '../../models/schedule';
+import { TimeService } from 'src/app/core/services/time/time.service';
 
 @Component({
   selector: 'app-schedule-dialog',
@@ -8,7 +9,11 @@ import { DateTime } from 'luxon';
   styleUrls: ['./schedule-dialog.component.scss']
 })
 export class ScheduleDialogComponent implements OnInit {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialogRef: MatDialogRef<ScheduleDialogComponent>,
+    private timeService: TimeService
+  ) {}
 
   dialogType: string = '';
   name: string = '';
@@ -20,12 +25,25 @@ export class ScheduleDialogComponent implements OnInit {
   ngOnInit(): void {
     this.dialogType = this.data.type === 'edit' ? 'Edit' : 'Add';
 
-    if (this.dialogType === 'Edit') {
-      this.name = this.data?.schedule?.name;
-      this.category = this.data?.schedule?.category;
-      this.startTime = this.data?.schedule?.startTime;
-      this.endTime = this.data?.schedule?.endTime;
-      this.duration = this.startTime && this.endTime ? DateTime.fromISO(this.endTime).diff(DateTime.fromISO(this.startTime)).toFormat('h\'h\' m\'m\' s\'s\'') : 'Unable to compute duration';
-    }
+    this.name = this.data.schedule.name;
+    this.category = this.data.schedule.category;
+    this.startTime = this.timeService.formatTime(this.data.schedule.startTime);
+    this.endTime = this.timeService.formatTime(this.data.schedule.endTime);
+    this.duration = this.timeService.calculateDuration(this.data.schedule.startTime, this.data.schedule.endTime);
+  }
+
+  cancel(): void {
+    this.dialogRef.close();
+  }
+
+  adjustSchedule(): void {
+    this.dialogRef.close(
+      {
+        name: this.name,
+        category: this.category,
+        startTime: this.startTime,
+        endTime: this.endTime,
+      }
+    )
   }
 }

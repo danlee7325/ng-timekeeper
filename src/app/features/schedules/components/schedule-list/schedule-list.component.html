@@ -52,14 +52,14 @@
                         </a>
                     </div>
                     <div class="add-schedule-container">
-                        <a routerLink="" class="schedule-link">
+                        <a routerLink="" class="schedule-link" (click)="openAdd()">
                             <mat-icon>add</mat-icon>
                             <div class="schedule-text"> Add Schedule </div>
                         </a>
                     </div>
                 </div>
             </th>
-            <td mat-cell *matCellDef="let element" class="edit-cell"> <a routerLink="" (click)="openEdit(element)">Edit</a> </td>
+            <td mat-cell *matCellDef="let element; let i = index;" class="edit-cell"> <a *ngIf="!isScheduleRunning || (isScheduleRunning && i !== schedules.length - 1)" routerLink="" (click)="openEdit(element)">Edit</a> </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

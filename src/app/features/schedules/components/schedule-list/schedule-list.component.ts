@@ -99,11 +99,49 @@ export class ScheduleListComponent implements OnInit {
   }
 
   openEdit(schedule: Schedule): void {
-    this.dialog.open(ScheduleDialogComponent, {
+    const dialogRef = this.dialog.open(ScheduleDialogComponent, {
       data: {
         type: 'edit',
         schedule: schedule,
       }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        schedule.name = result?.name;
+        schedule.category = result?.category;
+        schedule.startTime = new Date(result?.startTime);
+        schedule.endTime = new Date(result?.endTime);
+      }
+    });
+  }
+
+  openAdd(): void {
+    const schedule: Schedule = {
+      id: uuidv4(),
+      user: this.currentUser,
+      name: 'Schedule',
+      category: 'Category',
+      startTime: new Date(),
+      endTime: new Date(),
+    };
+
+    const dialogRef = this.dialog.open(ScheduleDialogComponent, {
+      data: {
+        type: 'add',
+        schedule: schedule,
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      schedule.name = result?.name;
+      schedule.category = result?.category;
+      schedule.startTime = new Date(result?.startTime);
+      schedule.endTime = new Date(result?.endTime);
+
+      this.schedules.push(schedule);
+
+      this.table?.renderRows();
     });
   }
 }
