@@ -5,12 +5,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { HeaderComponent } from './header/header.component';
 import { MatIconModule } from '@angular/material/icon';
-import { FooterComponent } from './footer/footer.component'; 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent,
   ],
   imports: [
     CommonModule,
@@ -19,7 +17,6 @@ import { FooterComponent } from './footer/footer.component';
   ],
   exports: [
     HeaderComponent,
-    FooterComponent,
   ]
 })
 export class CoreComponentsModule { }
