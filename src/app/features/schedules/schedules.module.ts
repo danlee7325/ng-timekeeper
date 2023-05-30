@@ -6,7 +6,6 @@ import { SchedulesRoutingModule } from './schedules-routing.module';
 
 import { SchedulesComponent } from './pages/schedules/schedules.component';
 import { ScheduleListComponent } from './components/schedule-list/schedule-list.component';
-import { ScheduleDetailsComponent } from './components/schedule-details/schedule-details.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
@@ -27,7 +26,6 @@ import { ScheduleDialogComponent } from './components/schedule-dialog/schedule-d
   declarations: [
     SchedulesComponent,
     ScheduleListComponent,
-    ScheduleDetailsComponent,
     ScheduleDurationPipe,
     ScheduleDialogComponent
   ],
@@ -48,8 +46,6 @@ import { ScheduleDialogComponent } from './components/schedule-dialog/schedule-d
 
     FontAwesomeModule
   ],
-  exports: [
-    ScheduleDetailsComponent
-  ]
+  exports: []
 })
 export class SchedulesModule { }

@@ -27,3 +27,8 @@
 .sidenav-content {
     @extend .main-section-padding;
 }
+
+::ng-deep .mat-drawer-inner-container {
+    position: relative;
+    right: 10px;
+}

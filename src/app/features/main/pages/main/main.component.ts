@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MatDrawer } from '@angular/material/sidenav';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { MatDrawer, MatDrawerContent } from '@angular/material/sidenav';
 import { MainService } from '../../services/main.service';
 
 @Component({
@@ -9,12 +9,15 @@ import { MainService } from '../../services/main.service';
 })
 export class MainComponent implements AfterViewInit {
   @ViewChild('navDrawer') navDrawer!: MatDrawer;
-  @ViewChild('scheduleDrawer') scheduleDrawer!: MatDrawer;
+  @ViewChild('navDrawerContent') navDrawerContent!: MatDrawerContent;
 
-  constructor(private mainService: MainService) {}
+  constructor(private mainService: MainService, private el: ElementRef) {}
 
   ngAfterViewInit(): void {
     this.mainService.navDrawer = this.navDrawer;
-    this.mainService.scheduleDrawer = this.scheduleDrawer;
+
+    console.log(this.navDrawer);
+
+    console.log(this.navDrawerContent);
   }
 }

@@ -6,7 +6,6 @@ import { MatDrawer } from '@angular/material/sidenav';
 })
 export class MainService {
   public navDrawer!: MatDrawer;
-  public scheduleDrawer!: MatDrawer;
 
   constructor() { }
 }

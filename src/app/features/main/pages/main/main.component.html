@@ -6,11 +6,7 @@
             <app-navigation></app-navigation>
         </mat-drawer>
 
-        <mat-drawer #scheduleDrawer mode="side" opened="false" position="end" class="sidenav">
-            <app-schedule-details></app-schedule-details>
-        </mat-drawer>
-
-        <mat-drawer-content>
+        <mat-drawer-content #navDrawerContent>
             <div class="sidenav-content">
                 <router-outlet></router-outlet>
             </div>
