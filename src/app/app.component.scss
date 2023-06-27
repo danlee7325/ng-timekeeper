@@ -3,3 +3,7 @@
     align-content: center;
     justify-content: center;
 }
+
+::ng-deep .cdk-overlay-pane {
+    min-width: 50%;
+}

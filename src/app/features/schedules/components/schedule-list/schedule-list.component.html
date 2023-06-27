@@ -59,7 +59,10 @@
                     </div>
                 </div>
             </th>
-            <td mat-cell *matCellDef="let element; let i = index;" class="edit-cell"> <a *ngIf="!isScheduleRunning || (isScheduleRunning && i !== schedules.length - 1)" routerLink="" (click)="openEdit(element)">Edit</a> </td>
+            <td mat-cell *matCellDef="let element; let i = index;" class="edit-cell">
+                <a *ngIf="!isScheduleRunning || (isScheduleRunning && i !== schedules.length - 1)" routerLink="" (click)="openEdit(element)">Edit</a>
+                <a *ngIf="!isScheduleRunning || (isScheduleRunning && i !== schedules.length - 1)" routerLink="" (click)="deleteSchedule(i)" class="delete-icon"><mat-icon>delete</mat-icon></a>
+            </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

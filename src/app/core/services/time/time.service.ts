@@ -9,7 +9,7 @@ export class TimeService {
   constructor() { }
 
   formatTime(time: Date): string {
-    return DateTime.fromJSDate(time).toLocaleString(DateTime.DATETIME_MED);
+    return DateTime.fromJSDate(time).toLocaleString(DateTime.DATETIME_MED_WITH_SECONDS);
   }
 
   calculateDuration(startTime: Date, endTime: Date): string {

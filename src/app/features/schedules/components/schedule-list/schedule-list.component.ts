@@ -134,14 +134,22 @@ export class ScheduleListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      schedule.name = result?.name;
-      schedule.category = result?.category;
-      schedule.startTime = new Date(result?.startTime);
-      schedule.endTime = new Date(result?.endTime);
+      if (result) {
+        schedule.name = result?.name;
+        schedule.category = result?.category;
+        schedule.startTime = new Date(result?.startTime);
+        schedule.endTime = new Date(result?.endTime);
 
-      this.schedules.push(schedule);
+        this.schedules.push(schedule);
 
-      this.table?.renderRows();
+        this.table?.renderRows();
+      }
     });
+  }
+
+  deleteSchedule(index: number) {
+    this.schedules.splice(index, 1);
+
+    this.table?.renderRows();
   }
 }

@@ -32,6 +32,10 @@ export class ScheduleDialogComponent implements OnInit {
     this.duration = this.timeService.calculateDuration(this.data.schedule.startTime, this.data.schedule.endTime);
   }
 
+  calculateDuration(): void {
+    this.duration = this.timeService.calculateDuration(new Date(this.startTime), new Date(this.endTime));
+  }
+
   cancel(): void {
     this.dialogRef.close();
   }
