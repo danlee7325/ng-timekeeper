@@ -18,6 +18,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { ScheduleDurationPipe } from 'src/app/core/pipes/scheduleDuration.pipe';
 import { ScheduleDialogComponent } from './components/schedule-dialog/schedule-dialog.component';
@@ -43,6 +45,8 @@ import { ScheduleDialogComponent } from './components/schedule-dialog/schedule-d
     MatDialogModule,
     MatFormFieldModule,
     MatButtonModule,
+    MatSortModule,
+    MatPaginatorModule,
 
     FontAwesomeModule
   ],
