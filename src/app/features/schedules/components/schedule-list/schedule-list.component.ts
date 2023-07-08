@@ -69,6 +69,7 @@ export class ScheduleListComponent implements AfterViewInit, OnInit {
     this.isScheduleRunning = false;
 
     this.schedules[this.schedules.length - 1].endTime = new Date();
+    this.schedules[this.schedules.length - 1].duration = this.calculateDuration(this.schedules[this.schedules.length - 1].startTime, this.schedules[this.schedules.length - 1].endTime!)
 
     this.refreshTable();
   }
@@ -87,6 +88,7 @@ export class ScheduleListComponent implements AfterViewInit, OnInit {
         schedule.category = result?.category;
         schedule.startTime = new Date(result?.startTime);
         schedule.endTime = new Date(result?.endTime);
+        schedule.duration = this.calculateDuration(schedule.startTime, schedule.endTime);
       }
     });
   }
@@ -107,6 +109,7 @@ export class ScheduleListComponent implements AfterViewInit, OnInit {
         schedule.category = result?.category;
         schedule.startTime = new Date(result?.startTime);
         schedule.endTime = new Date(result?.endTime);
+        schedule.duration = this.calculateDuration(schedule.startTime, schedule.endTime);
 
         this.schedules.push(schedule);
 
@@ -127,5 +130,9 @@ export class ScheduleListComponent implements AfterViewInit, OnInit {
     this.dataSource.sort = this.sort;
 
     this.table?.renderRows();
+  }
+
+  calculateDuration(startTime: Date, endTime: Date): number {
+    return DateTime.fromJSDate(endTime).diff(DateTime.fromJSDate(startTime)).as('seconds');
   }
 }
