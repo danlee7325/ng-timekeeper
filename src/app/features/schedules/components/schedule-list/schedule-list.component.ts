@@ -1,15 +1,10 @@
 import { Component, AfterViewInit, OnInit, ViewChild } from '@angular/core';
-
 import { Schedule } from '../../models/schedule';
-
-import { v4 as uuidv4 } from 'uuid';
 import { DateTime } from 'luxon';
-
+import { v4 as uuidv4 } from 'uuid';
 import { MatTable, MatTableDataSource } from '@angular/material/table'
 import { MatDialog } from '@angular/material/dialog';
-
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-
 import { ScheduleDialogComponent } from '../schedule-dialog/schedule-dialog.component';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
@@ -39,30 +34,9 @@ export class ScheduleListComponent implements AfterViewInit, OnInit {
 
   ngOnInit(): void {
     this.schedules = [
-      {
-        id: uuidv4(),
-        user: 'Daniel Lee',
-        name: 'Schedule 1',
-        category: 'Category 1',
-        startTime: new Date('January 15, 2023 08:04:25'),
-        endTime: new Date('January 15, 2023 16:01:30'),
-      },
-      {
-        id: uuidv4(),
-        user: 'Daniel Lee',
-        name: 'Schedule 2',
-        category: 'Category 2',
-        startTime: new Date('January 16, 2023 08:01:22'),
-        endTime: new Date('January 16, 2023 16:02:20'),
-      },
-      {
-        id: uuidv4(),
-        user: 'Daniel Lee',
-        name: 'Schedule 3',
-        category: 'Category 3',
-        startTime: new Date('January 17, 2023 08:00:15'),
-        endTime: new Date('January 17, 2023 16:03:55'),
-      }
+      new Schedule(this.currentUser, 'Schedule', 'Category', new Date('January 15, 2023 08:04:25'), new Date('January 15, 2023 16:01:30')),
+      new Schedule(this.currentUser, 'Schedule', 'Category', new Date('January 16, 2023 08:01:22'), new Date('January 16, 2023 16:02:20')),
+      new Schedule(this.currentUser, 'Schedule', 'Category', new Date('January 17, 2023 08:00:15'), new Date('January 17, 2023 16:03:55')),
     ];
 
     this.dataSource = new MatTableDataSource(this.schedules);
@@ -82,15 +56,13 @@ export class ScheduleListComponent implements AfterViewInit, OnInit {
       name: this.defaultName,
       category: this.defaultCategory,
       startTime: new Date(),
-      endTime: undefined
+      endTime: undefined,
+      duration: 0,
     }
 
     this.schedules.push(newSchedule);
 
-    this.dataSource = new MatTableDataSource(this.schedules);
-    this.dataSource.paginator = this.paginator;
-
-    this.table?.renderRows()
+    this.refreshTable();
   }
 
   endSchedule(): void {
@@ -98,22 +70,7 @@ export class ScheduleListComponent implements AfterViewInit, OnInit {
 
     this.schedules[this.schedules.length - 1].endTime = new Date();
 
-    this.dataSource = new MatTableDataSource(this.schedules);
-    this.dataSource.paginator = this.paginator;
-
-    this.table?.renderRows();
-  }
-
-  calculateDuration(startTime: Date, endTime: Date): string {
-    let duration: string = ''
-    
-    if (startTime !== endTime) {
-      duration = DateTime.fromJSDate(endTime).diff(DateTime.fromJSDate(startTime)).toFormat('h\'h\' m\'m\' s\'s\'');
-    } else {
-      duration = DateTime.now().diff(DateTime.fromJSDate(startTime)).toFormat('h\'h\' m\'m\' s\'s\'');
-    }
-
-    return duration;
+    this.refreshTable();
   }
 
   openEdit(schedule: Schedule): void {
@@ -135,14 +92,7 @@ export class ScheduleListComponent implements AfterViewInit, OnInit {
   }
 
   openAdd(): void {
-    const schedule: Schedule = {
-      id: uuidv4(),
-      user: this.currentUser,
-      name: 'Schedule',
-      category: 'Category',
-      startTime: new Date(),
-      endTime: new Date(),
-    };
+    const schedule: Schedule = new Schedule(this.currentUser, 'Schedule', 'Category', new Date(), new Date());
 
     const dialogRef = this.dialog.open(ScheduleDialogComponent, {
       data: {
@@ -160,10 +110,7 @@ export class ScheduleListComponent implements AfterViewInit, OnInit {
 
         this.schedules.push(schedule);
 
-        this.dataSource = new MatTableDataSource(this.schedules);
-        this.dataSource.paginator = this.paginator;
-
-        this.table?.renderRows();
+        this.refreshTable();
       }
     });
   }
@@ -171,8 +118,13 @@ export class ScheduleListComponent implements AfterViewInit, OnInit {
   deleteSchedule(index: number): void {
     this.schedules.splice(index, 1);
 
+    this.refreshTable();
+  }
+
+  refreshTable(): void {
     this.dataSource = new MatTableDataSource(this.schedules);
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
 
     this.table?.renderRows();
   }
